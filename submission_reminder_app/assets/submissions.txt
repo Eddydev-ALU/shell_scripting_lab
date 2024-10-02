@@ -1,6 +1,8 @@
 student, assignment, submission status
 here, Shell Navigation, submitted
 Noel, Shell Navigation, not submitted
-tresor, SLTD, not submitted
-jean, Linux, submitted,
-promesse, English, not submitted
+tresor, Shell Navigation, not submitted
+jean, Shell Navigation, submitted,
+promesse, Shell Navigation, not submitted
+Kelvin, Shell Navigation, submitted
+Henry, Shell Navigation, not submitted

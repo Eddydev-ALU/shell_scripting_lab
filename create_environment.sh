@@ -15,11 +15,11 @@ source ./modules/functions.sh
 
 submissions_file="./assets/submissions.txt"
 
-echo "Assignment: $ASSIGNMENT"
-echo "Days remaining to submit: $DAYS_REMAINING days"
+echo "Assignment: \$ASSIGNMENT"
+echo "Days remaining to submit: \$DAYS_REMAINING days"
 echo "--------------------------------------------"
 
-check_submissions $submissions_file
+check_submissions \$submissions_file
 EOL
 chmod +x submission_reminder_app/app/reminder.sh
 
@@ -28,30 +28,32 @@ cat <<EOL > submission_reminder_app/modules/functions.sh
 
 # Function to read submissions file and output students who have not submitted
 function check_submissions {
-    local submissions_file=$1
-    echo "Checking submissions in $submissions_file"
+    local submissions_file=\$1
+    echo "Checking submissions in \$submissions_file"
 
     # Skip the header and iterate through the lines
     while IFS=, read -r student assignment status; do
         # Remove leading and trailing whitespace
-        student=$(echo "$student" | xargs)
-        assignment=$(echo "$assignment" | xargs)
-        status=$(echo "$status" | xargs)
+        student=\$(echo "\$student" | xargs)
+        assignment=\$(echo "\$assignment" | xargs)
+        status=\$(echo "\$status" | xargs)
 
         # Check if assignment matches and status is 'not submitted'
-        if [[ "$assignment" == "$ASSIGNMENT" && "$status" == "not submitted" ]]; then
-            echo "Reminder: $student has not submitted the $ASSIGNMENT assignment!"
+        if [[ "\$assignment" == "\$ASSIGNMENT" && "\$status" == "not submitted" ]]; then
+            echo "Reminder: \$student has not submitted the \$ASSIGNMENT assignment!"
         fi
-    done < <(tail -n +2 "$submissions_file") # Skip the header
+    done < <(tail -n +2 "\$submissions_file") # Skip the header
 }
 EOL
 chmod +x submission_reminder_app/modules/functions.sh
 
 cp submissions.txt submission_reminder_app/assets/submissions.txt
 cat <<EOL >> submission_reminder_app/assets/submissions.txt
-tresor, SLTD, not submitted
-jean, Linux, submitted,
-promesse, English, not submitted
+tresor, Shell Navigation, not submitted
+jean, Shell Navigation, submitted,
+promesse, Shell Navigation, not submitted
+Kelvin, Shell Navigation, submitted
+Henry, Shell Navigation, not submitted
 EOL
 
 cat <<EOL > submission_reminder_app/config/config.env
