@@ -5,8 +5,8 @@ source ./modules/functions.sh
 
 submissions_file="./assets/submissions.txt"
 
-echo "Assignment: "
-echo "Days remaining to submit:  days"
+echo "Assignment: $ASSIGNMENT"
+echo "Days remaining to submit: $DAYS_REMAINING days"
 echo "--------------------------------------------"
 
-check_submissions 
+check_submissions $submissions_file
